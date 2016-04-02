@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<title>Welcome to our site</title>
+	</head>
+	<body>
+		<h2>
+			<a href="script04.html" id="redirect">Welcome to our site...c`mon in!</a>
+		</h2>
+		<script>
+			window.onload=initAll;
+
+			function initAll() {
+				document.getElementById("redirect").onclick = initRedirect;
+			}
+
+			function initRedirect() {
+				window.location = "jswelcome.html";
+				return false;
+			}
+		</script>
+	</body>
+</html>

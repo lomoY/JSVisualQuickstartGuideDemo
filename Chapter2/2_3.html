@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<title>函数带括号与不带括号</title>
+	</head>
+	<body>
+		<div>
+			<button id='myButton1'>按钮abc()</button>
+			<button id='myButton2'>按钮abc</button>
+			<button id='myButton3'>按钮A=abc</button>
+			<button id='myButton4'>按钮B=abc()</button>
+
+		</div>
+
+		<script>
+		
+			var button1 = document.getElementById("myButton1");
+			var button2 = document.getElementById("myButton2");
+			var button3 = document.getElementById("myButton3");
+			var button4 = document.getElementById("myButton4");
+			
+			abc = function(){
+				console.log("5");
+				return 6;
+			};
+			button1.onclick = abc();
+			button2.onclick=abc;
+			var A = abc;
+			var B = abc();		
+			console.log(A);
+			console.log(B);
+		</script>
+	</body>
+</html>

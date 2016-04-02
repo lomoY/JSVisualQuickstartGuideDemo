@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<title>Welcome to our site</title>
+	</head>
+	<body>
+		<h2>
+			Hey,check out <a href="http://www.baidu.com" id="redirect">my cat`s Web site</a>
+		</h2>
+		<script>
+			window.onload=initAll;
+			function initAll() {
+				document.getElementById("redirect").onclick=initRedirect;
+
+				function initRedirect() {
+					alert("We are not responsible for content of pages outside our site");
+					window.location = this;
+					return false;
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<title>处理错误</title>
+	</head>
+	<body>
+	<h2>这是一个平方根运算</h2>
+	<script>
+		window.onload=initAll;
+		function initAll() {
+			var ans=prompt("输入一个数字","");
+			try{
+				if(!ans || isNaN(ans) || ans<0){
+					throw new Error("Not a valid number");
+				}
+				alert(ans+"的平方根是"+Math.sqrt(ans));
+			}
+			catch(errMsg) {
+				alert(errMsg.message);
+			}
+		}
+	</script>
+	</body>
+</html>
