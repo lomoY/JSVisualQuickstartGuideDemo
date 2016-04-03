@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>A Simple Rollover</title>
+	<style type="text/css">
+	body{
+		background: #FFF;
+	}
+	img{
+		border-width: 0;
+	}
+	img#arrow,imgarrowImg{
+		width: 147px;
+		height: 82px;
+	}
+
+	.centered{
+		text-align: center;
+	}
+
+	#adBanner{
+		width:400px;
+		height: 75px;
+	}
+	
+	</style>
+</head>
+<body>
+	<a href="#" onmousemove="document.images['arrow'].src='images/arrow_on.gif'" onmouseout="document.images['arrow'].src='images/arrow_off.png'"><img src="images/arrow_off.png" id="arrow" alt="arrow"></a>
+</body>
+</html>
