@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>A More Effective Rollover</title>
+	<style type="text/css">
+	body{
+		background: #FFF;
+	}
+	img{
+		border-width: 0;
+	}
+	img#arrow,imgarrowImg{
+		width: 147px;
+		height: 82px;
+	}
+
+	.centered{
+		text-align: center;
+	}
+
+	#adBanner{
+		width:400px;
+		height: 75px;
+	}
+	
+	</style>
+</head>
+<body>
+	<a href="#"><img src="images/button1_off.png" alt="button1" id="button1"></a>
+	<a href="#"><img src="images/button2_off.png" alt="button2" id="button2"></a>
+<script type="text/javascript">
+	window.onload = rolloverInit;
+
+	function rolloverInit(){
+		for (var i = 0 ;i<document.images.length; i++) {
+			if(document.images[i].parentNode.tagName == "A") {
+				setupRollover(document.images[i]);
+			}
+		}
+	}
+
+	function setupRollover(theImage) {
+
+		theImage.outImage = new Image();
+		theImage.outImage.src = theImage.src;
+		theImage.onmouseout = function() {
+			this.src = this.outImage.src;
+		}
+
+		theImage.overImage = new Image();
+		theImage.overImage.src = "images/"+theImage.id+"_on.png";
+		theImage.onmouseover = function() {
+			this.src = this.overImage.src;
+		}
+	}
+</script>
+</body>
+</html>
