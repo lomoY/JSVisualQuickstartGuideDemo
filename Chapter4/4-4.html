@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Link Rollover</title>
+	<style type="text/css">
+	body{
+		background: #FFF;
+	}
+	img{
+		border-width: 0;
+	}
+	img#arrow,imgarrowImg{
+		width: 147px;
+		height: 82px;
+	}
+
+	.centered{
+		text-align: center;
+	}
+
+	#adBanner{
+		width:400px;
+		height: 75px;
+	}
+	
+	</style>
+</head>
+<body>
+	<h1><a href="#" id="arrow">Next page</a></h1>
+	<img src="images/arrow_off.png" id="arrowImg" alt="arrow">
+<script type="text/javascript">
+	window.onload = rolloverInit;
+
+	function rolloverInit(){
+		for (var i = 0; i<document.links.length; i++) {
+			var linkObj =document.links[i];
+			if(linkObj.id) {
+				var imgObj = document.getElementById(linkObj.id+"Img");
+				if(imgObj) {
+					setupRollover(linkObj,imgObj);
+				}
+			}
+		}
+	}
+
+	function setupRollover(theLink,theImage) {
+		theLink.imgToChange = theImage;//theLink.imgToChange此时指向img DOM对象,在这里已经不是赋值了
+
+		theLink.outImage = new Image();
+		theLink.outImage.src = theImage.src;
+
+		theLink.overImage = new Image();
+		theLink.overImage.src = "images/"+theLink.id+"_click.png";
+		theLink.onmouseout = function() {
+			//在这里，this.imgToChange指向的src就是图片的src
+			this.imgToChange.src = this.outImage.src;//如果改成theLink.imgToChange.src，会报错：thelink is not defined？
+		}
+		theLink.onmouseover = function() {
+			this.imgToChange.src = this.overImage.src;
+		}
+	}
+</script>
+</body>
+</html>

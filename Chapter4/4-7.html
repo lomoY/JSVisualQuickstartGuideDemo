@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cycling Banner</title>
+	<style type="text/css">
+		body{
+		background: #FFF;
+	}
+	img{
+		border-width: 0;
+	}
+	img#arrow,imgarrowImg{
+		width: 147px;
+		height: 82px;
+	}
+
+	.centered{
+		text-align: center;
+	}
+
+	#adBanner{
+		width:400px;
+		height: 75px;
+	}
+	</style>
+</head>
+<body>
+	<div class="centered">
+		<img src="images/reading1.jpg" id="adBanner" alt="Ad Banner">
+	</div>
+<script type="text/javascript">
+	window.onload = rotate;
+
+	var theAd = 0 ;
+	var adImages = new Array("images/reading1.jpg","images/reading2.jpg","images/reading3.jpg");
+
+	function rotate () {
+		theAd ++;
+		if(theAd == adImages.length) {
+			theAd = 0;
+		}
+		document.getElementById("adBanner").src = adImages[theAd];
+
+		setTimeout(rotate,3*1000);
+	}
+</script>
+</body>
+</html>

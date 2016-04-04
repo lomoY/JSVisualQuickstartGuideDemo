@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>A Simple Rollover</title>
+	<title>A More Effective Rollover</title>
 	<style type="text/css">
 	body{
 		background: #FFF;
@@ -26,6 +26,33 @@
 	</style>
 </head>
 <body>
-	<a href="#" onmousemove="document.images['arrow'].src='images/arrow_on.gif'" onmouseout="document.images['arrow'].src='images/arrow_off.png'"><img src="images/arrow_off.png" id="arrow" alt="arrow"></a>
+	<a href="#"><img src="images/button1_off.png" alt="button1" id="button1"></a>
+	<a href="#"><img src="images/button2_off.png" alt="button2" id="button2"></a>
+<script type="text/javascript">
+	window.onload = rolloverInit;
+
+	function rolloverInit(){
+		for (var i = 0 ;i<document.images.length; i++) {
+			if(document.images[i].parentNode.tagName == "A") {
+				setupRollover(document.images[i]);
+			}
+		}
+	}
+
+	function setupRollover(theImage) {
+
+		theImage.outImage = new Image();
+		theImage.outImage.src = theImage.src;
+		theImage.onmouseout = function() {
+			this.src = this.outImage.src;
+		}
+
+		theImage.overImage = new Image();
+		theImage.overImage.src = "images/"+theImage.id+"_on.png";
+		theImage.onmouseover = function() {
+			this.src = this.overImage.src;
+		}
+	}
+</script>
 </body>
 </html>

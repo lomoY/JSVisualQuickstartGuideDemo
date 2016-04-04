@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>A More Effective Rollover</title>
+	<title>Three-state Rollover</title>
 	<style type="text/css">
 	body{
 		background: #FFF;
@@ -45,6 +45,12 @@
 		theImage.outImage.src = theImage.src;
 		theImage.onmouseout = function() {
 			this.src = this.outImage.src;
+		}
+
+		theImage.clickImage = new Image();
+		theImage.clickImage.src = "images/"+theImage.id+"_click.png";
+		theImage.onclick = function() {
+			this.src = theImage.clickImage.src;
 		}
 
 		theImage.overImage = new Image();

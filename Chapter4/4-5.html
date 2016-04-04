@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Multiple Links,Single Rollover</title>
+	<style type="text/css">
+	body{
+		background-color: #EC9;
+	}
+	img{
+		border-width: 0;
+	}
+	#captionDiv{
+		float:right;
+		width: 210px;
+		margin: auto 50px;
+	}
+	#captionField{
+		margin:20px auto;
+		width: 208px;
+		height: 27px;
+	}
+	#inventionDiv{
+		width: 375px;
+		margin-left: 20px;
+	}
+	#heading{
+		margin-bottom: 20px;
+		width:375px;
+		height: 26px;
+	}
+	</style>
+</head>
+<body>
+	<div id="captionDiv">
+		<img src="images/DaVinci.gif" width="220" height="410" alt="DaVinci">
+		<img src="images/bg.jpg" id="captionField" alt="Text Field">
+	</div>
+	<div id="inventionDiv">
+		<h1 id="heading" >Leonardo`s Inventions</h1>
+		<a href="#" class="captionField" id="flyer"><img src="images/flyer.jpg" width="293" height="165" alt="Flying Machine" id="flyerImg"></a>
+		<a href="#" class="captionField" id="tank"><img src="images/tank.jpg" width="293" height="165" alt="Tank" id="tankImg"></a>
+		<a href="#" class="captionField" id="helicopter"><img src="images/helicopter.jpg" width="293" height="165" alt="Helicopter" id="helicopterImg"></a>
+	</div>
+<script type="text/javascript">
+	window.onload=rolloverInit;
+
+	function rolloverInit () {
+		for (var i = 0 ; i <document.links.length ; i++) {
+			var linkObj = document.links[i];
+			if (linkObj.className) {
+				var imgObj = document.getElementById(linkObj.className);
+				if(imgObj){
+					setupRollover(linkObj,imgObj);
+				}
+			}
+		}
+	}
+
+	function setupRollover(theLink,textImage){
+		theLink.imgToChange = textImage;
+		theLink.onmouseout = function() {
+			this.imgToChange.src = this.outImage.src;//当页面加载的时候并不会跑到这个方法中去检查this.outImage属性是否有效
+		}
+
+		theLink.onmouseover = function() {
+			this.imgToChange.src = this.overImage.src;
+		}
+
+		theLink.outImage = new Image();
+		theLink.outImage.src = textImage.src;
+		theLink.overImage = new Image();
+		theLink.overImage.src = "images/"+theLink.id+"Text.png";
+	}
+</script>
+</body>
+</html>
