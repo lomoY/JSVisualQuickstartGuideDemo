@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Select and Go Navigation</title>
+	<style type="text/css">
+	.centered{
+		text-align: center;
+	}
+	</style>
+</head>
+<body>
+<form action="gotoLocaion.cgi" class="centered">
+	<select id="newLocation">
+		<option selected>Select a topic</option>
+		<option value="www.baidu.com">Baidu</option>
+		<option value="www.sina.com">Sina</option>
+		<option value="www.taobao.com">Taobao</option>
+		<option value="www.163.com">163</option>
+	</select>
+	<noscript>
+		<input type="submit" value="Go There!">
+	</noscript>
+</form>
+
+<script type="text/javascript">
+	window.onload = initForm;
+	window.onunload = function(){};
+
+	function initForm() {
+		document.getElementById("newLocation").selectedIndex = 0;
+		document.getElementById("newLocation").onchange = jumpPage;
+	}
+
+	function jumpPage() {
+		var newLoc = document.getElementById("newLocation");
+		var newPage = newLoc.options[newLoc.selectedIndex].value;
+
+		if(newPage != "" ) {
+			window.location = newPage;
+		}
+	}
+</script>
+</body>
+</html>

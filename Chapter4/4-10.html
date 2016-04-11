@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Random image</title>
+	<link rel="stylesheet" type="text/css" href="chapter4.css">
+</head>
+<body>
+	<img src="images/pokemon1.jpeg" width="305" height="312" id="myPicture" alt="some image">
+<script type="text/javascript">
+	
+	window.onload = choosePic;
+
+	var myPix = new Array("images/pokemon1.jpeg","images/pokemon2.jpeg","images/pokemon3.jpeg");
+
+	function choosePic() {
+		var randomNum = Math.floor(Math.random()*myPix.length);
+		document.getElementById("myPicture").src = myPix[randomNum];
+	}
+</script>
+</body>
+</html>
