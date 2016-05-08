@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>密码验证</title>
+	<style type="text/css">
+
+	</style>
+</head>
+<body>
+<h3>强中弱密码验证</h3>
+<h4>密码验证规则</h4>
+<p>弱强度密码：1.6位 2.一种字符组合（纯数字、纯英文小写、纯英文大写）</p>
+<p>中强度密码：1.6位，两种字符组合 2.超过6位，一种字符组合（纯数字、纯英文小写、纯英文大写）</p>
+<p>强强度密码：1.超过6位 2.两种字符组合</p>
+<p>极强强度密码：1.超过6位 2.三种种字符组合</p>
+<div><label for="usrPassword1">密码：</label><input id="usrPassword1" type="text" placeholder="请在此输入密码"/></div>
+<div><label for="usrPassword2">确认密码：</label><input id="usrPassword2" type="text" placeholder="请再次输入密码"/></div>
+<button id="checkBtn" type="button">校验</button>
+<script type="text/javascript">
+	window.onload = pageInit;
+
+	function pageInit(){
+		var checkBtn = document.getElementById("checkBtn"),
+			usrPassword1 =document.getElementById("usrPassword1"),
+			usrPassword2 = document.getElementById("usrPassword2");
+
+		addEvent();
+	}
+
+	function addEvent(){
+			checkBtn.onclick = function(){
+			passwordCheck();
+		}
+	}
+
+	function passwordCheck(){
+		console.log("!");
+		var Psw1Value = usrPassword1.value,//.value应该是个方法才对，为什么没有括号
+			Psw2Value = usrPassword2.value;
+			//关于Psw1Value.length,一个数字、一个小写英文、一个大写英文、一个汉字的length都是1
+		var Psw1ValueLength = Psw1Value.length;
+
+			if(Psw1ValueLength<6){
+				console.log("密码不得小于6位");
+			}else if(Psw1ValueLength==6){
+				ruleWeak(Psw1Value);
+			}
+
+	}
+
+	function ruleWeak(){
+
+		//等于6位
+
+		//弱密码
+
+		var weakPsw = new Array();
+		//纯数字0-9
+		weakPsw[0]= /^\d{6}$/;
+
+		//纯小写字母
+		weakPsw[1] =/^[a-z]{6}$/;
+
+		//纯大写字母
+		weakPsw[2] =/^[A-Z]{6}$/;
+
+		//中密码
+		var midlePsw = new Array();
+		//等于6位，两种字符组合
+		midlePsw[0] = /^[0-9a-z]{6}$/;
+		midlePsw[1] = /^[0-9A-Z]{6}$/;
+		midlePsw[2] = /^[a-zA-Z]{6}$/;
+
+		//超过6位，一种字符组合
+		midlePsw[3] = /^\d{7,}$/;
+
+		//纯小写字母
+		midlePsw[4]=/^[a-z]{7,}$/;
+
+		//纯大写字母
+		midlePsw[5] =/^[A-Z]{7,}$/;
+
+		//强密码
+		var strongPsw = new Array();
+		//超过6位，两种字符组合
+		strongPsw[0] = /^[0-9a-z]{7,}$/;
+		strongPsw[1] = /^[0-9A-Z]{7,}$/;
+		strongPsw[2] = /^[a-zA-Z]{7,}$/;
+
+		//极强密码
+		//超过6位，三种字符组合
+		var maxPsw = new Array();
+			maxPsw[0] = /^[0-9a-zA-Z]{7,}$/;
+
+
+
+	}
+
+</script>
+</body>
+</html>

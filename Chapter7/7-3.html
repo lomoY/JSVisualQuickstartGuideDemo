@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>提取字符串</title>
+	<style type="text/css">
+		body {
+			color: #000;
+			background-color: #FFF;
+		}
+
+		input.invalid {
+			background-color: #FF9;
+			border: 2px red inset;
+		}
+
+		label.invalid {
+			color: #F00;
+			font-weight: bold;
+		}
+
+		.centered {
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<h2 class="centered">Reverse a list of names</h2>
+	<form action="#">
+		Enter a list of names with first name first, one per line:<br>
+		<textarea id="nameField" class="nameList" rows="10" cols="50"></textarea>
+		<p><input type="reset">&nbsp;<input type="submit" value="Submit"></p>
+	</form>
+<script type="text/javascript">
+window.onload = initForms;
+
+function initForms() {
+	for (var i=0; i< document.forms.length; i++) {
+		document.forms[i].onsubmit = validForm;
+	}
+}
+
+function validForm() {
+	var allTags = document.getElementsByTagName("*");
+
+	for (var i=0; i<allTags.length; i++) {
+		validTag(allTags[i]);
+	}
+	return false;
+
+	function validTag(thisTag) {
+		var allClasses = thisTag.className.split(" ");
+	
+		for (var j=0; j<allClasses.length; j++) {
+			validBasedOnClass(allClasses[j]);
+		}
+
+		function validBasedOnClass(thisClass) {
+			switch(thisClass) {
+				case "":
+					break;
+				case "nameList":
+					thisTag.value = nameList(thisTag.value);
+				default:
+			}
+		}
+		
+		function nameList(inNameList) {
+			var newNames = new Array;
+			var newNameField = "";
+
+			var re = /\s*\n\s*/;
+			var nameList = inNameList.split(re);
+
+			re = /(\S+)\s(\S+)/;
+
+			for (var k=0; k<nameList.length; k++) {
+				newNames[k] = nameList[k].replace(re, "$2, $1");
+			}
+
+			for (k=0; k<newNames.length; k++) {
+				newNameField += newNames[k] + "\n";
+			}
+			return newNameField;
+		}
+	}
+}
+
+</script>
+</body>
+</html>
