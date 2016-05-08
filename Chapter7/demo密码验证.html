@@ -35,25 +35,22 @@
 
 	function passwordCheck(){
 		console.log("!");
-		var Psw1Value = usrPassword1.value,//.value应该是个方法才对，为什么没有括号
-			Psw2Value = usrPassword2.value;
+		var psw1Value = usrPassword1.value,//.value应该是个方法才对，为什么没有括号
+			psw2Value = usrPassword2.value;
 			//关于Psw1Value.length,一个数字、一个小写英文、一个大写英文、一个汉字的length都是1
-		var Psw1ValueLength = Psw1Value.length;
+		var psw1ValueLength = psw1Value.length;
 
-			if(Psw1ValueLength<6){
+			if(psw1ValueLength<6){
 				console.log("密码不得小于6位");
-			}else if(Psw1ValueLength==6){
-				ruleWeak(Psw1Value);
+			}else{
+				pswRule(psw1Value);
 			}
 
 	}
 
-	function ruleWeak(){
-
-		//等于6位
+	function pswRule(psw1Value){
 
 		//弱密码
-
 		var weakPsw = new Array();
 		//纯数字0-9
 		weakPsw[0]= /^\d{6}$/;
@@ -70,13 +67,10 @@
 		midlePsw[0] = /^[0-9a-z]{6}$/;
 		midlePsw[1] = /^[0-9A-Z]{6}$/;
 		midlePsw[2] = /^[a-zA-Z]{6}$/;
-
 		//超过6位，一种字符组合
 		midlePsw[3] = /^\d{7,}$/;
-
 		//纯小写字母
 		midlePsw[4]=/^[a-z]{7,}$/;
-
 		//纯大写字母
 		midlePsw[5] =/^[A-Z]{7,}$/;
 
@@ -92,7 +86,32 @@
 		var maxPsw = new Array();
 			maxPsw[0] = /^[0-9a-zA-Z]{7,}$/;
 
+		var result = false;
 
+		for(var i = 0;i<weakPsw.length;i++){
+			if(weakPsw[i].test(psw1Value)){
+				console.log("弱密码");
+				return false;
+			};
+		}
+
+		for(var i = 0;i<midlePsw.length;i++){
+			if(midlePsw[i].test(psw1Value)){
+				console.log("中密码");
+			};
+		}
+
+		for(var i = 0;i<strongPsw.length;i++){
+			if(strongPsw[i].test(psw1Value)){
+				console.log("强密码");
+			};
+		}
+
+		for(var i = 0;i<maxPsw.length;i++){
+			if(maxPsw[i].test(psw1Value)){
+				console.log("极强密码");
+			};
+		}
 
 	}
 
