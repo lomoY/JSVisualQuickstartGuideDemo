@@ -8,7 +8,7 @@
 </head>
 <body>
 <h3>强中弱密码验证</h3>
-<h4>密码验证规则</h4>
+<h4>密码验证规则</h4>('6位三种字符呢')
 <p>弱强度密码：1.6位 2.一种字符组合（纯数字、纯英文小写、纯英文大写）</p>
 <p>中强度密码：1.6位，两种字符组合 2.超过6位，一种字符组合（纯数字、纯英文小写、纯英文大写）</p>
 <p>强强度密码：1.超过6位 2.两种字符组合</p>
@@ -86,32 +86,50 @@
 		var maxPsw = new Array();
 			maxPsw[0] = /^[0-9a-zA-Z]{7,}$/;
 
-		var result = false;
-
-		for(var i = 0;i<weakPsw.length;i++){
-			if(weakPsw[i].test(psw1Value)){
-				console.log("弱密码");
-				return false;
-			};
+		
+		if(weakCheck(psw1Value)){
+			console.log("弱密码");
+		}else if(midleCheck(psw1Value)){
+			console.log("中强密码");
+		}else if(strongCheck(psw1Value)){
+			console.log("强密码");
+		}else if(maxCheck(psw1Value)){
+			console.log("极强的密码")
 		}
 
-		for(var i = 0;i<midlePsw.length;i++){
-			if(midlePsw[i].test(psw1Value)){
-				console.log("中密码");
-			};
+		function weakCheck(psw1Value){
+			for(var i = 0;i<weakPsw.length;i++){
+				if(weakPsw[i].test(psw1Value)){
+					return true;
+				};
+			}
 		}
 
-		for(var i = 0;i<strongPsw.length;i++){
-			if(strongPsw[i].test(psw1Value)){
-				console.log("强密码");
-			};
+		function midleCheck(psw1Value){
+			for(var i = 0;i<midlePsw.length;i++){
+				if(midlePsw[i].test(psw1Value)){
+					return true
+				};
+			}
 		}
 
-		for(var i = 0;i<maxPsw.length;i++){
-			if(maxPsw[i].test(psw1Value)){
-				console.log("极强密码");
-			};
+		function strongCheck(psw1Value){
+			for(var i = 0;i<strongPsw.length;i++){
+				if(strongPsw[i].test(psw1Value)){
+					return true
+				};
+			}
 		}
+
+		function maxCheck(psw1Value){
+			for(var i = 0;i<maxPsw.length;i++){
+				if(maxPsw[i].test(psw1Value)){
+					return true
+				};
+			}
+		}
+
+
 
 	}
 
