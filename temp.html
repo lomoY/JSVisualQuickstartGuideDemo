@@ -4,16 +4,32 @@
 	<title>test</title>
 </head>
 <body>
-<div id="box1" class="reqd abcd efgd">Nothing</div>
+<input type="test" id="myText"/>
+<button type="button" id="testBtn">验证</button>
 <script type="text/javascript">
+	window.onload=initPage;
 
-	var box = document.getElementById("box1");
-	var classes = box.className.split(" ");
-	var index = classes.indexOf("a");
-	console.log(index);
-	console.log(classes);
-	console.log(typeof(""));
-	console.log(typeof(" "));
+	function initPage(){
+		var btn = document.getElementById("testBtn");
+		btn.onclick=consoleInfo;
+
+
+		function consoleInfo(){
+			if(textTest()){
+				console.log("right");
+			}else{
+				console.log("false");
+			}
+		}
+
+		function textTest(){
+			console.log("in");
+			var textVal = document.getElementById("myText").value;
+			var rightText = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;;
+			return rightText.test(textVal)
+		}
+	}
+
 </script>
 </body>
 </html>

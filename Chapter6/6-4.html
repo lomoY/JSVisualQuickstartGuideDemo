@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Password Check</title>
+	<style type="text/css">
+		body{
+			color: #000;
+			background-color: #fff;
+		}
+
+		input.invalid{
+			background-color: #ff9;
+			border:2px red inset;
+		}
+
+		label.invalid{
+			color: #foo;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<form action="#">
+		<p><label for="userName">Your name:<input type="text" size="30" id="userName" class="reqd"></label></p>
+		<p><label for="passwd1">Choose a password:<input type="password" id="passwd1" class="reqd"></label></p>
+		<p><label for="passwd2">Verify password:<input type="password" id="passwd2" class="reqd passwd1"></label></p>
+		<p><input type="submit" value="Submit">&nbsp;<input type="reset" value="Reset"></p>
+	</form>
+	<script type="text/javascript">
+		window.onload = function() {
+			document.forms[0].onsubmit = validForm;//forms会返回一个包含页面所有form的数组，form[0]就是页面的第一个form
+		}
+
+		function validForm () {
+			var allGood = true;
+			var allTags = document.forms[0].getElementsByTagName("*");//返回所有标签
+
+			for(var i=0; i<allTags.length;i++) {
+				if(!validTag(allTags[i])){
+					allGood = false;
+				}
+			}
+			return allGood;//allGood如果是false则阻止表单的提交
+
+			function validTag(thisTag) {
+				var outClass = "";
+				var allClasses = thisTag.className.split(" ");
+
+				for(var j=0 ; j<allClasses.length;j++) {
+					outClass += validBasedOnClass(allClasses[j]) + " ";
+				}
+
+				thisTag.className = outClass;
+
+				if(outClass.indexOf("invalid") > -1){//如果要检索的字符串值没有出现，则该方法返回 -1
+					thisTag.focus();
+					if(thisTag.nodeName == "INPUT") {
+						thisTag.select();
+					}
+					return false;//?
+				}
+				return true;
+
+				function validBasedOnClass(thisClass) {
+					var classBack = "";
+				
+					switch(thisClass) {
+						case "":
+						case "invalid":
+							break;
+						case "reqd":
+							if (allGood && thisTag.value == "") {
+								classBack = "invalid ";
+							}
+							classBack += thisClass;
+							break;
+						default:
+							if (allGood && !crossCheck(thisTag,thisClass)) {
+								classBack = "invalid ";
+							}
+							classBack += thisClass;
+					}
+					return classBack;
+				}
+				
+				function crossCheck(inTag,otherFieldID) {
+					if (!document.getElementById(otherFieldID)) {
+						return false;
+					}
+					return (inTag.value == document.getElementById(otherFieldID).value);
+				}
+			}
+		}
+	</script>
+</body>
+</html>

@@ -2,13 +2,20 @@
 <html>
 <head>
 <<<<<<< HEAD
+<<<<<<< HEAD
 	<title>验证电子邮件</title>
 	<style type="text/css">
 		body{
+=======
+	<title>Email Validation</title>
+	<style type="text/css">
+		body {
+>>>>>>> 7577d7bfda59fe65fd3dddd9a4fbd623c79bdf0d
 			color: #000;
 			background-color: #FFF;
 		}
 
+<<<<<<< HEAD
 		input.invalid{
 			background-color: #FF9;
 			border:2px red inset;
@@ -31,9 +38,103 @@
 </form>
 =======
 	<title></title>
+=======
+		input.invalid {
+			background-color: #FF9;
+			border: 2px red inset;
+		}
+
+		label.invalid {
+			color: #F00;
+			font-weight: bold;
+		}
+
+		.centered {
+			text-align: center;
+		}
+	</style>
+>>>>>>> 7577d7bfda59fe65fd3dddd9a4fbd623c79bdf0d
 </head>
 <body>
+	<h2 class="centered">Email Validation</h2>
+	<form action="someAction.cgi">
+		<p><label>Email Address:
+		<input class="email" type="text" size="50"></label></p>
+		<p><input type="reset">&nbsp;<input type="submit" value="Submit"></p>
+	</form>
+<script type="text/javascript">
+	window.onload = initForms;
 
+function initForms() {
+	for (var i=0; i< document.forms.length; i++) {
+		document.forms[i].onsubmit = validForm;
+	}
+}
+
+function validForm() {
+	var allGood = true;
+	var allTags = document.getElementsByTagName("*");
+
+	for (var i=0; i<allTags.length; i++) {
+		if (!validTag(allTags[i])) {
+			allGood = false;
+		}
+	}
+	return allGood;
+
+	function validTag(thisTag) {
+		var outClass = "";
+		var allClasses = thisTag.className.split(" ");
+	
+		for (var j=0; j<allClasses.length; j++) {
+			outClass += validBasedOnClass(allClasses[j]) + " ";
+		}
+	
+		thisTag.className = outClass;
+	
+		if (outClass.indexOf("invalid") > -1) {
+			invalidLabel(thisTag.parentNode);
+			thisTag.focus();
+			if (thisTag.nodeName == "INPUT") {
+				thisTag.select();
+			}
+			return false;
+		}
+		return true;
+		
+		function validBasedOnClass(thisClass) {
+			var classBack = "";
+		
+			switch(thisClass) {
+				case "":
+				case "invalid":
+					break;
+				case "email":
+					if (allGood && !validEmail(thisTag.value)) classBack = "invalid ";
+				default:
+					classBack += thisClass;
+			}
+			return classBack;
+		}
+				
+		function validEmail(email) {
+			var re = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+			return re.test(email);
+		}
+		
+		function invalidLabel(parentTag) {
+			if (parentTag.nodeName == "LABEL") {
+				parentTag.className += " invalid";
+			}
+		}
+	}
+}
+
+<<<<<<< HEAD
 >>>>>>> b4cfb66a47863d6216fa81e903a2b4dc82fb9a08
+=======
+</script>
+>>>>>>> 7577d7bfda59fe65fd3dddd9a4fbd623c79bdf0d
 </body>
 </html>
