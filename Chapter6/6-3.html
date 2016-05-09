@@ -14,7 +14,11 @@
 		}
 
 		label.invalid{
+<<<<<<< HEAD
 			color: #f00;
+=======
+			color: #foo;
+>>>>>>> b4cfb66a47863d6216fa81e903a2b4dc82fb9a08
 			font-weight: bold;
 		}
 	</style>
@@ -28,51 +32,62 @@
 	</form>
 	<script type="text/javascript">
 		window.onload = function() {
-			document.forms[0].onsubmit = validForm;
+			document.forms[0].onsubmit = validForm;//forms会返回一个包含页面所有form的数组，form[0]就是页面的第一个form
 		}
 
 		function validForm () {
 			var allGood = true;
-			var allTags = document.forms[0].getElementsByTagName("*");
+			var allTags = document.forms[0].getElementsByTagName("*");//返回所有标签
 
 			for(var i=0; i<allTags.length;i++) {
 				if(!validTag(allTags[i])){
 					allGood = false;
 				}
 			}
+<<<<<<< HEAD
 			console.log(allGood);
 			return allGood;
+=======
+			return allGood;//allGood如果是false则阻止表单的提交
+>>>>>>> b4cfb66a47863d6216fa81e903a2b4dc82fb9a08
 
 			function validTag(thisTag) {
 				var outClass = "";
 				var allClasses = thisTag.className.split("");
 
 				for(var j=0 ; j<allClasses.length;j++) {
+<<<<<<< HEAD
 					outClass += (validBasedOnClass(allClasses[j]) + "");
+=======
+					outClass += validBasedOnClass(allClasses[j]) + " ";
+>>>>>>> b4cfb66a47863d6216fa81e903a2b4dc82fb9a08
 				}
 
 				thisTag.className = outClass;
 
-				if(outClass.indexOf("invalid") > -1){
+				if(outClass.indexOf("invalid") > -1){//如果要检索的字符串值没有出现，则该方法返回 -1
 					thisTag.focus();
 					if(thisTag.nodeName == "INPUT") {
 						thisTag.select();
 					}
-
-					return false;
+					return false;//?
 				}
 				return true;
 
+<<<<<<< HEAD
 				function validBasedOnClass(thisClass){
+=======
+				function validBasedOnClass(thisClass) {
+>>>>>>> b4cfb66a47863d6216fa81e903a2b4dc82fb9a08
 					var classBack = "";
-
+				
 					switch(thisClass) {
 						case "":
 						case "invalid":
 							break;
 						case "reqd":
-							if(allGood && thisTag.value == "") {
-								classBack = "invalid" ;
+							if (allGood && thisTag.value == "") {
+								classBack = "invalid ";
 							}
 							classBack += thisClass;
 							break;
