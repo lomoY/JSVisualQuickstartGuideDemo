@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>密码验证</title>
+    <link rel="stylesheet" type="text/css" href="demo.css">
+</head>
+<body>
+    <h3>强中弱密码验证</h3>
+    <h4>密码验证规则</h4>('6位三种字符呢')
+    <p>弱强度密码：1.6位 2.一种字符组合（纯数字、纯英文小写、纯英文大写）</p>
+    <p>中强度密码：1.6位，两种字符组合 2.超过6位，一种字符组合（纯数字、纯英文小写、纯英文大写）</p>
+    <p>强强度密码：1.超过6位 2.两种字符组合</p>
+    <p>极强强度密码：1.超过6位 2.三种种字符组合</p>
+    <p>说明：这个demo的思路是枚举正则的可能，然后去test字符串。</p>
+    <div>
+        <label for="usrPassword1">密码：</label>
+        <input id="usrPassword1" type="text" placeholder="请在此输入密码" />
+    </div>
+    <div>
+        <label for="usrPassword2">确认密码：</label>
+        <input id="usrPassword2" type="text" placeholder="请再次输入密码" />
+    </div>
+    <button id="checkBtn" type="button">校验</button>
+    <script type="text/javascript" src="demo.js"></script>
+</body>
+
+</html>
