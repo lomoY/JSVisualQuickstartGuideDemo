@@ -1,0 +1,15 @@
+JavaScript循环
+JavaScript有for循环以及for in循环
+
+一、for in循环
+for in循环用于遍历【数组】或者【对象的属性】
+
+	语法：
+		for (变量 in 对象)
+		{
+			在此执行代码
+		}
+	
+	
+备注：
+	参考文章：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in

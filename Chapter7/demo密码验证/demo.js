@@ -62,13 +62,24 @@ function pswRule(psw1Value) {
     maxPsw[0] = /^[0-9a-zA-Z]{7,}$/;
 
 
+    //把正则和对应的提示信息对应放在对象中。
     var checkRegs = {
         weak: {
             reg: weakPsw,
-            desc: '弱密码'
+            regInfo:"弱密码"
         },
-        mid: midlePsw,
-        strong: strongPsw
+        mid:{
+            reg:midlePsw,
+            regInfo:"中强度密码"
+        },
+        strong:{
+            reg:strongPsw,
+            regInfo:"强密码"
+        },
+        max:{
+            reg:maxPsw,
+            regInfo:"极强的密码"
+        }
     };
 
     for (var i in checkRegs) {
@@ -86,7 +97,7 @@ function pswRule(psw1Value) {
         }
 
         if (status == true) {
-            console.log(checkRegs[i].desc);
+            console.log(checkRegs[i].regInfo);
         }
     }
 

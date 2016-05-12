@@ -1,35 +1,41 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>test</title>
+    <title>test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
+
 <body>
-<input type="test" id="myText"/>
-<button type="button" id="testBtn">验证</button>
-<script type="text/javascript">
-	window.onload=initPage;
+    <select id="mySelect">
+        <option value="1">A</option>
+        <option value="2">B</option>
+        <option value="3">C</option>
+        <option value="4">D</option>
+        <option value="5">E</option>
+    </select>
+    <input type="text" id="mySelect">
+    <button type="button" id="testBtn">验证</button>
+    <script type="text/javascript">
+    window.onload = initPage;
 
-	function initPage(){
-		var btn = document.getElementById("testBtn");
-		btn.onclick=consoleInfo;
+    function initPage() {
+        var btn = document.getElementById("testBtn");
+        btn.onclick = consoleInfo;
+    }
 
+    function consoleInfo() {
+        var x
+        var mycars = new Array()
+        mycars[0] = "Saab"
+        mycars[1] = "Volvo"
+        mycars[2] = "BMW"
 
-		function consoleInfo(){
-			if(textTest()){
-				console.log("right");
-			}else{
-				console.log("false");
-			}
-		}
-
-		function textTest(){
-			console.log("in");
-			var textVal = document.getElementById("myText").value;
-			var rightText = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;;
-			return rightText.test(textVal)
-		}
-	}
-
-</script>
+        for (x in mycars) {
+            console.log(mycars[x]);
+        }
+    }
+    </script>
 </body>
+
 </html>
