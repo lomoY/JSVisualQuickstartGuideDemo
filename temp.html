@@ -25,15 +25,17 @@
     }
 
     function consoleInfo() {
-        var x
-        var mycars = new Array()
-        mycars[0] = "Saab"
-        mycars[1] = "Volvo"
-        mycars[2] = "BMW"
 
-        for (x in mycars) {
-            console.log(mycars[x]);
+        var body = {
+        	name:'xiaoming',
+        	age:'16',
+        	sex:'male'
         }
+
+        for (var i in body) {
+            console.log(body[i]);
+        }
+
     }
     </script>
 </body>

@@ -2,9 +2,9 @@ JavaScript循环
 JavaScript有for循环以及for in循环
 
 一、for in循环
-for in循环用于遍历【数组】或者【对象的属性】
+for in循环用于遍历【数组】（不建议用来遍历数组）或者【对象的属性】
 
-	语法：
+	句法：
 		for (变量 in 对象)
 		{
 			在此执行代码
@@ -13,3 +13,27 @@ for in循环用于遍历【数组】或者【对象的属性】
 	
 备注：
 	参考文章：https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...in
+	
+	
+注意：
+	（一）for in 循环遍历数组与for循环便利数组的区别
+		  for in 循环只会输出有值的值，for循环会遍历所有值。例如：
+			        var mycars = new Array();
+					// mycars[0] = "Saab",
+					mycars[1] = "Volvo",
+					mycars[2] = "BMW";
+
+					for (var c in mycars) {
+						console.log(mycars[c]);
+					}
+
+					for(var i=0;i<mycars.length;i++){
+						console.info(mycars[i]);
+					}
+					
+					//Volvo
+					  BMW
+					  
+					  undefined
+					  Volvo
+					  BMW
